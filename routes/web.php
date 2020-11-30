@@ -17,10 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/lay', function () {
-    return view('layout');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/perfil', 'UsuarioController@index')->middleware('auth');

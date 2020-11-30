@@ -35,6 +35,12 @@
     .botF:hover{
         background-color: #ABA798;
     } 
+    .dep{
+        color: black;
+    }
+    /*.dep:hover{
+        background-color: #ABA798;
+    }*/
     </style>
 </head>
 <body>
@@ -78,8 +84,13 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">Mi perfil</a>
+                                <a class="dropdown-item" href="/perfil">Mi perfil</a>
+                                @if(Auth::user()->rol == 1)
+                                <a class="dropdown-item" href="">Ver pedidos</a>
+                                @else
                                 <a class="dropdown-item" href="">Mis pedidos</a>
+                                @endif
+                                
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -97,23 +108,48 @@
         </div>
     </nav>
 
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #d2bba0">
+    <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #ddd8c4">
         <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDep" aria-controls="navbarDep" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <button class="navbar-toggler dep" type="button" data-toggle="collapse" data-target="#navbarDep" aria-controls="navbarDep" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
-        </button>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarDep">
-                <a href="">Oficina</a>
-                <a href="">Sala</a>
-                <a href="">Cocina</a>
-                <a href="">Oficina</a>
+                <div class="container row">
+                    <div class="col p-0">
+                        <a class="dep nav-link text-center border-left border-dark" href="/">Home</a>
+                    </div>
+                    <div class="col p-0">
+                        <a class="dep nav-link text-center border-left border-dark" href="">Oficina</a>
+                    </div>
+                    <div class="col p-0">
+                        <a class="dep nav-link text-center border-left border-dark" href="">Hogar</a>
+                    </div>
+                    @guest
+                    <div class="col p-0">
+                        <a class="dep nav-link text-center border-left border-dark border-right" href="">Cocina</a>
+                    </div>
+                    @else
+                    @if(Auth::user()->rol == null)
+                    <div class="col p-0">
+                        <a class="dep nav-link text-center border-left border-dark" href="">Cocina</a>
+                    </div>
+                    <div class="col p-0">
+                        <a class="dep nav-link text-center border-left border-dark border-right" href="">Pedido actual</a>
+                    </div>
+                    @else
+                    <div class="col p-0">
+                        <a class="dep nav-link text-center border-left border-dark border-right" href="">Agregar nuevo producto</a>
+                    </div>
+                    @endif
+                    @endguest
+                </div>
             </div>
         </div>
     </nav>
 </div>
 
-<main class="py-4">
+<main>
             @yield('content')
 </main>
 
