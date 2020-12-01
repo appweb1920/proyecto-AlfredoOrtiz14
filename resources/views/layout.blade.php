@@ -38,6 +38,9 @@
     .dep{
         color: black;
     }
+    .perf{
+        color: #df2935;
+    }
     /*.dep:hover{
         background-color: #ABA798;
     }*/

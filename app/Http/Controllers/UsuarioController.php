@@ -72,6 +72,20 @@ class UsuarioController extends Controller
         //
     }
 
+    public function actualizaDatosEntrega(Request $request)
+    {
+        $user = user::find($request->id);
+        if(!is_null($user))
+        {
+            $user->name = $request->name;
+            $user->direccion = $request->direccion;
+            $user->estado = $request->estado;
+            $user->ciudad = $request->ciudad;
+            $user->save();   
+        }
+        return redirect('/perfil');
+    }
+    
     /**
      * Remove the specified resource from storage.
      *

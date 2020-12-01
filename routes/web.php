@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil', 'UsuarioController@index')->middleware('auth');
+Route::post('/perfilActualiza', 'UsuarioController@actualizaDatosEntrega')->middleware('auth');
