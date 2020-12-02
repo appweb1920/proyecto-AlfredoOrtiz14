@@ -41,6 +41,12 @@
     .perf{
         color: #df2935;
     }
+    .textProd{
+        font-size: 15px;
+    }
+    .fondo{
+        background-image: url("img/pwoPoNOYOJ6Y8tQxsbVtH3AdUmdrdSD0F5urPPsi.jpeg");
+    }
     /*.dep:hover{
         background-color: #ABA798;
     }*/
@@ -142,7 +148,7 @@
                     </div>
                     @else
                     <div class="col p-0">
-                        <a class="dep nav-link text-center border-left border-dark border-right" href="">Agregar nuevo producto</a>
+                        <a class="dep nav-link text-center border-left border-dark border-right" href="/nuevoProducto">Agregar nuevo producto</a>
                     </div>
                     @endif
                     @endguest
