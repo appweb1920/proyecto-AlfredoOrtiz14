@@ -81,7 +81,10 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+        //buscar el dato
+        $producto = producto::find($id);
+        //pasarlo a la vista
+        return view('actualizaProducto')->with('p', $producto);
     }
 
     /**
@@ -105,6 +108,20 @@ class ProductoController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function actualiza(Request $request)
+    {
+        $producto = producto::find($request->id);
+        if(!is_null($producto))
+        {
+            $producto->nombre = $request->nombre;
+            $producto->descripcion = $request->descripcion;
+            $producto->precio = $request->precio;
+            $producto->existencias = $request->existencias;
+            $producto->save();   
+        }
+        return redirect('/');
     }
 
     /**

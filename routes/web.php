@@ -29,5 +29,6 @@ Route::post('/perfilActualiza', 'UsuarioController@actualizaDatosEntrega')->midd
 Route::get('/', 'ProductoController@index');
 Route::get('/nuevoProducto', 'ProductoController@nuevoProducto')->middleware('auth');
 Route::post('/insertaProducto', 'ProductoController@store')->middleware('auth');
-Route::post('/actualizaProducto/{id}', 'ProductoController@actualiza')->middleware('auth');
+Route::get('/actualizaProducto/{id}', 'ProductoController@show')->middleware('auth');
+Route::post('/actualizaProd', 'ProductoController@actualiza')->middleware('auth');
 Route::get('/eliminaProducto/{id}', 'ProductoController@destroy')->middleware('auth');
