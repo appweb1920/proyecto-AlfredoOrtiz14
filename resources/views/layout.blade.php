@@ -47,6 +47,15 @@
     .fondo{
         background-image: url("img/pwoPoNOYOJ6Y8tQxsbVtH3AdUmdrdSD0F5urPPsi.jpeg");
     }
+    .producto{
+        font-size: 20px;
+    }
+    .imagen{
+        transition: transform .5s;
+    }
+    .imagen:hover{
+        transform: scale(0.9);
+    }
     /*.dep:hover{
         background-color: #ABA798;
     }*/

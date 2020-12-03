@@ -9,7 +9,7 @@
 </div>
 
 <div class="container p-4 border-bottom" style="font-size: 20px;">
-    <form action="/insertaProducto" method="post">
+    <form action="/insertaProducto" method="post" enctype="multipart/form-data">
     @csrf
     <div class="col-md-12">
         <div class="text-center perf pb-2" style="font-size: 32px;">Ingresa la información del nuevo producto</div>
@@ -51,7 +51,7 @@
                 <div class="card-body perf row col-md-12">
                     <div class="col-md-2">
                     <label for="foto">Imagen </label>
-                        <input type="file" name="foto" id="" style="font-size:15px; color:black;">
+                        <input type="file" name="foto" id="foto" accept="image/png, image/jpg, image/jpeg" style="font-size:15px; color:black;">
                     </div>
                 </div>
             </div>

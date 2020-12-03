@@ -91,10 +91,10 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                <a href="/" class="btn btn-secondary">Volver</a>
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Registrarse') }}
                                     </button>
+                                    <a href="/" class="btn btn-secondary">Volver</a>
                                 </div>
                             </div>
                         </form>

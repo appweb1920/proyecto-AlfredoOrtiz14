@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Auth::routes();
 
@@ -26,9 +26,8 @@ Route::get('/perfil', 'UsuarioController@index')->middleware('auth');
 Route::post('/perfilActualiza', 'UsuarioController@actualizaDatosEntrega')->middleware('auth');
 
 //Productos
-//Route::get('/nuevoProducto', 'UsuarioController@index')->middleware('auth');
-/*Route::get('/nuevoProducto', function () {
-    return view('nuevoProducto');
-});*/
-Route::get('/nuevoProducto', 'ProductoController@index')->middleware('auth');
+Route::get('/', 'ProductoController@index');
+Route::get('/nuevoProducto', 'ProductoController@nuevoProducto')->middleware('auth');
 Route::post('/insertaProducto', 'ProductoController@store')->middleware('auth');
+Route::post('/actualizaProducto/{id}', 'ProductoController@actualiza')->middleware('auth');
+Route::get('/eliminaProducto/{id}', 'ProductoController@destroy')->middleware('auth');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Producto;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -15,6 +16,12 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        $p = producto::all();
+        return view('welcome')->with('productos', $p);
+    }
+
+    public function nuevoProducto()
     {
         if(Auth::user()->rol==1)
         {
@@ -46,13 +53,21 @@ class ProductoController extends Controller
     {
         if(Auth::user()->rol==1)
         { 
+            //dd($request);
+            $archivo = $request->file('foto');
+            //dd($archivo->getClientOriginalName());
+            //if($archivo->getClientOriginalExtension() == "jpeg")
+            //{
+            $path = $request->file('foto')->storeAs('public/img', $archivo->getClientOriginalName());
+
             $producto = new producto;
             $producto->nombre = $request->nombre;
             $producto->descripcion = $request->descripcion;
-            $producto->foto = $request->foto;
+            $producto->foto = $archivo->getClientOriginalName();
             $producto->precio = $request->precio;
             $producto->existencias = $request->existencias;
             $producto->departamento = $request->departamento;
+            //dd($producto->foto);
             $producto->save();
         }
         return redirect("/");
@@ -100,6 +115,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = producto::find($id);
+        $producto->delete();
+        return redirect('/');
     }
 }
