@@ -81,8 +81,9 @@
             </button>
 
             <div class="content">
-                <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Busca">
+                <form action="/busca" class="form-inline my-2 my-lg-0">
+                @csrf
+                <input class="form-control mr-sm-2" type="text" name="cosa" placeholder="Busca">
                 <button class="btn botF my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
             </div>

@@ -113,6 +113,17 @@ class ProductoController extends Controller
         //pasarlo a la vista
         return view('verProducto')->with('p', $producto);
     }
+
+    public function busca(Request $request)
+    {
+        //buscar el dato
+        //dd($request->cosa);
+        $producto = producto::where('nombre', 'like', '%' . $request->cosa . '%')->get();
+        //sdd($producto);
+        //pasarlo a la vista
+        return view('welcome')->with('productos', $producto);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
