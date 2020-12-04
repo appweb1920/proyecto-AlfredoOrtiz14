@@ -45,16 +45,27 @@
         font-size: 15px;
     }
     .fondo{
-        background-image: url("img/pwoPoNOYOJ6Y8tQxsbVtH3AdUmdrdSD0F5urPPsi.jpeg");
+        /*background-image: url("storage/img/clean-and-simple-office-workdesk-setup-picjumbo-com.jpg");*/
+
     }
     .producto{
         font-size: 20px;
     }
     .imagen{
         transition: transform .5s;
+        min-width: 250px;
+        min-height: 250px;
     }
     .imagen:hover{
         transform: scale(0.9);
+    }
+    .precio{
+        font-size:18px;
+        color: green;
+    }
+    .prodDep{
+        background-color:red;
+        font-size:18px;
     }
     /*.dep:hover{
         background-color: #ABA798;
@@ -138,26 +149,29 @@
                         <a class="dep nav-link text-center border-left border-dark" href="/">Home</a>
                     </div>
                     <div class="col p-0">
-                        <a class="dep nav-link text-center border-left border-dark" href="">Oficina</a>
+                        <a class="dep nav-link text-center border-left border-dark" href="/oficina">Oficina</a>
                     </div>
                     <div class="col p-0">
-                        <a class="dep nav-link text-center border-left border-dark" href="">Hogar</a>
+                        <a class="dep nav-link text-center border-left border-dark" href="/hogar">Hogar</a>
                     </div>
                     @guest
                     <div class="col p-0">
-                        <a class="dep nav-link text-center border-left border-dark border-right" href="">Cocina</a>
+                        <a class="dep nav-link text-center border-left border-dark border-right" href="/cocina">Cocina</a>
                     </div>
                     @else
                     @if(Auth::user()->rol == null)
                     <div class="col p-0">
-                        <a class="dep nav-link text-center border-left border-dark" href="">Cocina</a>
+                        <a class="dep nav-link text-center border-left border-dark" href="/cocina">Cocina</a>
                     </div>
                     <div class="col p-0">
                         <a class="dep nav-link text-center border-left border-dark border-right" href="">Pedido actual</a>
                     </div>
                     @else
                     <div class="col p-0">
-                        <a class="dep nav-link text-center border-left border-dark border-right" href="/nuevoProducto">Agregar nuevo producto</a>
+                        <a class="dep nav-link text-center border-left border-dark" href="/cocina">Cocina</a>
+                    </div>
+                    <div class="col p-0">
+                        <a class="dep nav-link text-center border-left border-dark border-right" href="/nuevoProducto">Agregar producto</a>
                     </div>
                     @endif
                     @endguest

@@ -33,6 +33,27 @@ class ProductoController extends Controller
         }
     }
 
+    public function verOficina()
+    {
+        $p = producto::where('departamento', '=', 'oficina')->get();
+        //dd($p);
+        return view('oficina')->with('productos', $p);
+    }
+
+    public function verHogar()
+    {
+        $p = producto::where('departamento', '=', 'hogar')->get();
+        //dd($p);
+        return view('hogar')->with('productos', $p);
+    }
+
+    public function verCocina()
+    {
+        $p = producto::where('departamento', '=', 'cocina')->get();
+        //dd($p);
+        return view('cocina')->with('productos', $p);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -53,21 +74,19 @@ class ProductoController extends Controller
     {
         if(Auth::user()->rol==1)
         { 
-            //dd($request);
-            $archivo = $request->file('foto');
-            //dd($archivo->getClientOriginalName());
-            //if($archivo->getClientOriginalExtension() == "jpeg")
-            //{
-            $path = $request->file('foto')->storeAs('public/img', $archivo->getClientOriginalName());
-
             $producto = new producto;
             $producto->nombre = $request->nombre;
             $producto->descripcion = $request->descripcion;
-            $producto->foto = $archivo->getClientOriginalName();
+            $producto->foto = "";
             $producto->precio = $request->precio;
             $producto->existencias = $request->existencias;
             $producto->departamento = $request->departamento;
             //dd($producto->foto);
+            $producto->save();
+
+            $archivo = $request->file('foto');
+            $path = $request->file('foto')->storeAs('public/img', $producto->id.".".$archivo->getClientOriginalExtension());
+            $producto->foto = $producto->id.".".$archivo->getClientOriginalExtension();
             $producto->save();
         }
         return redirect("/");
@@ -87,6 +106,13 @@ class ProductoController extends Controller
         return view('actualizaProducto')->with('p', $producto);
     }
 
+    public function verProducto($id)
+    {
+        //buscar el dato
+        $producto = producto::find($id);
+        //pasarlo a la vista
+        return view('verProducto')->with('p', $producto);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -112,14 +138,25 @@ class ProductoController extends Controller
 
     public function actualiza(Request $request)
     {
-        $producto = producto::find($request->id);
-        if(!is_null($producto))
-        {
-            $producto->nombre = $request->nombre;
-            $producto->descripcion = $request->descripcion;
-            $producto->precio = $request->precio;
-            $producto->existencias = $request->existencias;
-            $producto->save();   
+        if(Auth::user()->rol==1)
+        { 
+            $producto = producto::find($request->id);
+            if(!is_null($producto))
+            {
+                $producto->nombre = $request->nombre;
+                $producto->descripcion = $request->descripcion;
+                $producto->precio = $request->precio;
+                $producto->existencias = $request->existencias;
+                $producto->departamento = $request->departamento;
+                if(!is_null($request->file('foto')))
+                {
+                    $archivo=$request->file('foto');
+                    $path = $request->file('foto')->storeAs('public/img', $producto->id.".".$archivo->getClientOriginalExtension());
+                    $producto->foto = $producto->id.".".$archivo->getClientOriginalExtension();
+                    //dd($producto->foto);
+                }
+                $producto->save();   
+            }
         }
         return redirect('/');
     }
@@ -132,8 +169,11 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto = producto::find($id);
-        $producto->delete();
+        if(Auth::user()->rol==1)
+        { 
+            $producto = producto::find($id);
+            $producto->delete();
+        }
         return redirect('/');
     }
 }

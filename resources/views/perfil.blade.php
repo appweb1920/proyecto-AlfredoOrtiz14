@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="p-4 border-bottom" style="font-size: 40px; color: #124e78; background-color:rgba(245, 245, 245, 0.5);">
-        <div class="container">
-            Mi Perfil
-        </div>
+    <div class="container">
+        Mi Perfil
     </div>
+</div>
 
 
 

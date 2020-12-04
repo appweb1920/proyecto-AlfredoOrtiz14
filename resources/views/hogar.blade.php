@@ -1,16 +1,11 @@
 @extends('layout')
 
 @section('content')
-<style>
-    .precio{
-        font-size:18px;
-        color: green;
-    }
-    .prodDep{
-        background-color:red;
-        font-size:18px;
-    }
-</style>
+<div class="p-4 border-bottom" style="font-size: 40px; color: #124e78; background-color:rgba(245, 245, 245, 0.5);">
+    <div class="container">
+        Hogar
+    </div>
+</div>
 
 
 <div class="container pt-4">

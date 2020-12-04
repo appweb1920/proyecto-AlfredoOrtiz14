@@ -38,23 +38,22 @@
                         <label for="existencias">Existencias </label>
                         <input type="text" name="existencias" id="" value="{{$p->existencias}}">
                     </div>
-                    
-                    <!--<div class="col-md-4">
-                    <label for="departamento">Departamento </label>
-                        <select name="departamento" id="">
-                            <option value="oficina">Oficina</option>
-                            <option value="cocina">Cocina</option>
-                            <option value="hogar">Hogar</option>
-                        </select>
-                    </div>-->
-                </div>
                 
-                <!--<div class="card-body perf row col-md-12">
+                    <div class="col-md-4">
+                    <label for="departamento">Departamento </label>
+                        <select name="departamento" id="" selected="{{$p->departamento}}">
+                            <option value="Oficina">Oficina</option>
+                            <option value="Cocina">Cocina</option>
+                            <option value="Hogar">Hogar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body perf row col-md-12">
                     <div class="col-md-2">
                     <label for="foto">Imagen </label>
                         <input type="file" name="foto" id="foto" accept="image/png, image/jpg, image/jpeg" style="font-size:15px; color:black;">
                     </div>
-                </div>-->
+                </div>
             </div>
             <button type="submit" class="btn mt-4 text-center" style="background-color: #598b2c; color: #f7ffe0; ">
                     {{ __('Guardar') }}
