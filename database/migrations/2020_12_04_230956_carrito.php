@@ -13,7 +13,16 @@ class Carrito extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('carrito', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_cliente');
+            $table->unsignedBigInteger('id_producto');
+
+            $table->id();
+            $table->foreign('id_cliente')->references('id')->on('users');
+            $table->foreign('id_producto')->references('id')->on('productos');
+            $table->integer('cantidad');
+            $table->timestamps();
+        });
     }
 
     /**

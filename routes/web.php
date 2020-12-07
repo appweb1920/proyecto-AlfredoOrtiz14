@@ -37,3 +37,6 @@ Route::get('/oficina', 'ProductoController@verOficina');
 Route::get('/hogar', 'ProductoController@verHogar');
 Route::get('/cocina', 'ProductoController@verCocina');
 Route::get('/busca', 'ProductoController@busca');
+
+//Carrito
+Route::get('/carrito', 'CarritoController@index');

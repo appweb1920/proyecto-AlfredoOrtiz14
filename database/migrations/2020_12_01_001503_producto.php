@@ -18,8 +18,8 @@ class Producto extends Migration
             $table->string('nombre', 50);
             $table->string('descripcion', 100);
             $table->string('foto');
-            $table->string('precio');
-            $table->string('existencias');
+            $table->integer('precio');
+            $table->integer('existencias');
             $table->string('departamento');
             $table->timestamps();
         });

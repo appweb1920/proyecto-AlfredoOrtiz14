@@ -8,11 +8,13 @@
             <img src="{{ asset('storage/img/'.$p->foto)}}" class="img-fluid" alt="">
         </div>
         <div class="col-md-6 col-sm-12">
+            <input type="hidden" name="id" value="{{$p->id}}">
             <div class="" style="font-size:35px;">{{$p->nombre}}</div>
             <div class="border-top" style="font-size:30px;">{{$p->descripcion}}</div>
             <div class="border-bottom precio" style="font-size:30px;">${{$p->precio}}</div>
             @guest
             @else
+            <div class="" style="font-size:30px;">Existencias: {{$p->existencias}}</div>
                 <div class="row">
                 @if(Auth::user()->rol == 1)
                     <div class="col pt-3">

@@ -165,7 +165,7 @@
                         <a class="dep nav-link text-center border-left border-dark" href="/cocina">Cocina</a>
                     </div>
                     <div class="col p-0">
-                        <a class="dep nav-link text-center border-left border-dark border-right" href="">Pedido actual</a>
+                        <a class="dep nav-link text-center border-left border-dark border-right" href="/carrito">Carrito</a>
                     </div>
                     @else
                     <div class="col p-0">
