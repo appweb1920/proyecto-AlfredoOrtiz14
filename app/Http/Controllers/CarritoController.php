@@ -64,8 +64,11 @@ class CarritoController extends Controller
             $carrito = new carrito;
             //$carrito = carrito::where('id_cliente', '=', $id)->get();
             $prod = $carrito->getProductosCarrito($id);
-            //dd($prod);
-        
+            //dd(count($prod));
+            if(count($prod) == 0)
+            {
+                $prod = null;
+            }
             return view('carrito')->with('productos', $prod);
         }
         else

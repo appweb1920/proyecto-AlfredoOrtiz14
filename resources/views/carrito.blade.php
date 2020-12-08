@@ -29,7 +29,7 @@
                     <img class="fotoCar border" src="{{ asset('storage/img/'.$p->foto)}}" alt="">
                 </div>
                 <div class="pb-4 pt-4 col-md-3 col-sm-12">
-                    Producto: {{$p->nombre}}
+                    {{$p->nombre}}
                 </div>
                 <div class="pb-4 pt-4 col-md-3 col-sm-12">
                     <label for="cantidad">Cantidad:</label>
@@ -48,7 +48,7 @@
             <a class="btn" style="background-color: #598b2c; color: #f7ffe0;" type="submit">Realizar Pedido</a>
         </div>
     @else
-        <div>Aún no has agregado productos a tu carrito</div>
+        <div>Aún no has agregado productos a tu carrito.</div>
     @endif
 </div>
 
