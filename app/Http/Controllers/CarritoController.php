@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Carrito;
 use App\User;
 use App\Producto;
+use Illuminate\Support\Facades\Auth;
 
 class CarritoController extends Controller
 {
@@ -16,7 +17,7 @@ class CarritoController extends Controller
      */
     public function index()
     {
-        return view('carrito');
+
     }
 
     /**
@@ -39,13 +40,11 @@ class CarritoController extends Controller
     {
         if(Auth::user()->rol==null)
         { 
+            //dd($request->id);
             $carrito = new carrito;
-            $carrito->id_usuario = $request->id_usuario;
-            $carrito->descripcion = $request->descripcion;
-            $carrito->foto = "";
-            $carrito->precio = $request->precio;
-            $carrito->existencias = $request->existencias;
-            $carrito->departamento = $request->departamento;
+            $carrito->id_cliente = Auth::user()->id;
+            $carrito->id_producto = $request->id;
+            $carrito->cantidad = 1;
             
             $carrito->save();
         }
@@ -60,7 +59,17 @@ class CarritoController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Auth::user()->rol==null)
+        { 
+            $carrito = new carrito;
+            //$carrito = carrito::where('id_cliente', '=', $id)->get();
+            $prod = $carrito->getProductosCarrito($id);
+            //dd($prod);
+        
+            return view('carrito')->with('productos', $prod);
+        }
+        else
+            return view('/');
     }
 
     /**
@@ -86,6 +95,20 @@ class CarritoController extends Controller
         //
     }
 
+    public function actualiza(Request $request)
+    {
+        if(Auth::user()->rol==null)
+        { 
+            $carrito = carrito::find($request->id);
+            if(!is_null($carrito))
+            {
+                $carrito->cantidad = $request->cantidad;
+                $carrito->save();   
+            }
+        }
+        return redirect()->back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -94,6 +117,11 @@ class CarritoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::user()->rol==null)
+        { 
+            $carrito = carrito::find($id);
+            $carrito->delete();
+        }
+        return redirect()->back();
     }
 }

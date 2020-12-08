@@ -25,7 +25,7 @@
                     </div>
                 @elseif(Auth::user()->rol == null)
                     <div class="col pt-3 align-items-center">
-                        <a href="http://" class="btn btn-primary">Agregar a Pedido</a>
+                        <a href="/agregaCarrito/{{$p->id}}" class="btn btn-primary">Agregar a Pedido</a>
                     </div>
                 @endif
                 </div>
@@ -35,3 +35,9 @@
 </div>
 
 @endsection
+
+<script>
+function alerta(){
+    alert("Seguro?");
+    }
+</script>

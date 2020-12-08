@@ -17,7 +17,6 @@
     <div class="row pt-4">
         @if(!is_null($productos))
             @foreach($productos as $p)
-            <input type="hidden" name="id" value="{{$p->id}}">
             <div class="col-md-3 col-sm-6 pb-5">
                 <div class="card producto" style="width: 16rem;">
                     <a href="/verProducto/{{$p->id}}">
@@ -41,7 +40,7 @@
                                 </div>
                             @elseif(Auth::user()->rol == null)
                                 <div class="col pt-3 align-items-center">
-                                    <a href="http://" class="btn btn-primary">Agregar a Pedido</a>
+                                    <a href="/agregaCarrito/{{$p->id}}" class="btn btn-primary">Agregar a Pedido</a>
                                 </div>
                             @endif
                             </div>

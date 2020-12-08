@@ -8,6 +8,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -165,7 +166,7 @@
                         <a class="dep nav-link text-center border-left border-dark" href="/cocina">Cocina</a>
                     </div>
                     <div class="col p-0">
-                        <a class="dep nav-link text-center border-left border-dark border-right" href="/carrito">Carrito</a>
+                        <a class="dep nav-link text-center border-left border-dark border-right" href="/carrito/{{Auth::user()->id}}">Carrito</a>
                     </div>
                     @else
                     <div class="col p-0">

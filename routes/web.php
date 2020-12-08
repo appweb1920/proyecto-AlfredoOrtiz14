@@ -39,4 +39,7 @@ Route::get('/cocina', 'ProductoController@verCocina');
 Route::get('/busca', 'ProductoController@busca');
 
 //Carrito
-Route::get('/carrito', 'CarritoController@index');
+Route::get('/carrito/{id}', 'CarritoController@show')->middleware('auth');;
+Route::get('/agregaCarrito/{id}', 'CarritoController@store')->middleware('auth');
+Route::post('/actualizaCar/{id}', 'CarritoController@actualiza')->middleware('auth');
+Route::get('/eliminaProdCar/{id}', 'CarritoController@destroy')->middleware('auth');
