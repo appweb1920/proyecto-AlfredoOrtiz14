@@ -13,7 +13,17 @@ class DetallePedido extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('detalle_pedido', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_pedido');
+            $table->unsignedBigInteger('id_producto');
+
+            $table->id();
+            $table->foreign('id_pedido')->references('id')->on('pedido');
+            $table->foreign('id_producto')->references('id')->on('productos');
+            $table->integer('cantidad');
+            $table->integer('subtotal');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +33,6 @@ class DetallePedido extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('detalle_pedido');
     }
 }

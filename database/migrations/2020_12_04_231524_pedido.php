@@ -13,7 +13,14 @@ class Pedido extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('pedido', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_cliente');
+
+            $table->id();
+            $table->foreign('id_cliente')->references('id')->on('users');
+            $table->integer('total');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class Pedido extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('pedido');
     }
 }
