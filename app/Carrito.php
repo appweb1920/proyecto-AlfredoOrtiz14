@@ -16,4 +16,10 @@ class Carrito extends Model
         AND carrito.id_cliente = '. $id_cliente);
         return $p;
     }
+
+    public function eliminaProdCarrito($id_cliente)
+    {
+        $p = DB::select('SELECT * FROM carrito WHERE carrito.id_cliente = '. $id_cliente);
+        return $p;
+    }
 }

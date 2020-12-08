@@ -43,3 +43,6 @@ Route::get('/carrito/{id}', 'CarritoController@show')->middleware('auth');;
 Route::get('/agregaCarrito/{id}', 'CarritoController@store')->middleware('auth');
 Route::post('/actualizaCar/{id}', 'CarritoController@actualiza')->middleware('auth');
 Route::get('/eliminaProdCar/{id}', 'CarritoController@destroy')->middleware('auth');
+
+//Pedido
+Route::get('/hacerPedido', 'PedidoController@store')->middleware('auth');

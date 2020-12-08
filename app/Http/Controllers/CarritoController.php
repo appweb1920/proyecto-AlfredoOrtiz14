@@ -62,6 +62,7 @@ class CarritoController extends Controller
         if(Auth::user()->rol==null)
         { 
             $carrito = new carrito;
+            $total = 0;
             //$carrito = carrito::where('id_cliente', '=', $id)->get();
             $prod = $carrito->getProductosCarrito($id);
             //dd(count($prod));
@@ -69,7 +70,13 @@ class CarritoController extends Controller
             {
                 $prod = null;
             }
-            return view('carrito')->with('productos', $prod);
+            else{
+                foreach($prod as $p){
+                    $total += ($p->precio * $p->cantidad); 
+                }
+                //dd($total);
+            }
+            return view('carrito')->with('productos', $prod)->with('total', $total);
         }
         else
             return view('/');
