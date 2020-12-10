@@ -10,25 +10,27 @@
         <div class="col-md-6 col-sm-12">
             <input type="hidden" name="id" value="{{$p->id}}">
             <div class="" style="font-size:35px;">{{$p->nombre}}</div>
-            <div class="border-top" style="font-size:30px;">{{$p->descripcion}}</div>
-            <div class="border-bottom precio" style="font-size:30px;">${{$p->precio}}</div>
+            <div class="border-top" style="font-size:20px;">{{$p->descripcion}}</div>
+            <div class="border-bottom precio" style="font-size:25px;">${{$p->precio}}</div>
             @guest
             @else
-            <div class="" style="font-size:30px;">Existencias: {{$p->existencias}}</div>
-                <div class="row">
                 @if(Auth::user()->rol == 1)
-                    <div class="col pt-3">
-                        <a href="/actualizaProducto/{{$p->id}}"  class="btn btn-warning">Editar</a>
-                    </div>
-                    <div class="col pt-3">
-                        <a href="/eliminaProducto/{{$p->id}}" class="btn btn-danger pt-1">Eliminar</a>
+                    <div class="" style="font-size:20px;">Existencias: {{$p->existencias}}</div>
+                    <div class="row">
+                        <div class="col pt-3">
+                            <a href="/actualizaProducto/{{$p->id}}"  class="btn btn-warning">Editar</a>
+                        </div>
+                        <div class="col pt-3">
+                            <a href="/eliminaProducto/{{$p->id}}" class="btn btn-danger pt-1">Eliminar</a>
+                        </div>
                     </div>
                 @elseif(Auth::user()->rol == null)
-                    <div class="col pt-3 align-items-center">
-                        <a href="/agregaCarrito/{{$p->id}}" class="btn btn-primary">Agregar a Pedido</a>
+                    <div class="row">
+                        <div class="col pt-3 align-items-center">
+                            <a href="/agregaCarrito/{{$p->id}}" class="btn btn-primary">Agregar a Pedido</a>
+                        </div>
                     </div>
                 @endif
-                </div>
             @endguest
         </div>
     </div>

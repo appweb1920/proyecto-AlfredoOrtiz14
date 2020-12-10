@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pedido;
+use App\Producto;
 use App\Carrito;
 use App\DetallePedido;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,14 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::user()->rol==1)
+        {
+            $pedido = new pedido;
+            $pedido = pedido::orderBy('created_at', 'desc')->get();
+            return view('verPedidos')->with('pedidos', $pedido);
+        }
+        else
+            return redirect("/");
     }
 
     /**
@@ -66,6 +74,11 @@ class PedidoController extends Controller
                     
                     $total += $detalle->subtotal;
                     $detalle->save();
+
+                    $prod = new producto;
+                    $prod = producto::find($p->id_producto);
+                    $prod->existencias = $prod->existencias - $p->cantidad;
+                    $prod->save();
                 }
                 //Guardar el total de la venta.
                 $pedido->total = $total;
@@ -92,13 +105,15 @@ class PedidoController extends Controller
      */
     public function show($id)
     {
-        $pedido = new pedido;
-        $pedido = pedido::where('id_cliente', '=', $id)->get();
-
-        //$detalle = new detallepedido;
-        //$dp = $detalle->detallePedido($pedido->id);
-        //SELECT * FROM pedido WHERE pedido.id_cliente = 2
-        return view('misPedidos')->with('pedidos', $pedido);
+        if(Auth::user()->rol==null)
+        {
+            $pedido = new pedido;
+            $pedido = pedido::where('id_cliente', '=', $id)->get();
+            
+            return view('misPedidos')->with('pedidos', $pedido);
+        }
+        else
+            return redirect("/");
     }
 
     /**

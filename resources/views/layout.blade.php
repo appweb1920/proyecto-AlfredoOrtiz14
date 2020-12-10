@@ -117,7 +117,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/perfil">Mi perfil</a>
                                 @if(Auth::user()->rol == 1)
-                                <a class="dropdown-item" href="">Ver pedidos</a>
+                                <a class="dropdown-item" href="/verPedidos">Ver pedidos</a>
                                 @else
                                 <a class="dropdown-item" href="/misPedidos/{{Auth::user()->id}}">Mis pedidos</a>
                                 @endif

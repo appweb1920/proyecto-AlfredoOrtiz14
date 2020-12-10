@@ -18,5 +18,12 @@ class Pedido extends Model
         //dd($p);
         return $p;
     }
+
+    public function datosEntrega($id_cliente)
+    {
+        $p = DB::select('SELECT * FROM users WHERE users.id = '. $id_cliente);
+        //dd($p);
+        return $p;
+    }
 }
 
