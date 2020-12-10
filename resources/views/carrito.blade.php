@@ -54,7 +54,7 @@
                 Total: ${{$total}}
             </div>
             <div class="col-md-4">
-            <a class="btn" style="background-color: #598b2c; color: #f7ffe0;" href="/hacerPedido">Realizar Pedido</a>
+            <a class="btn" style="background-color: #598b2c; color: #f7ffe0;" href="/hacerPedido" onclick="pedido()">Realizar Pedido</a>
             </div>
         </div>
 
@@ -65,3 +65,8 @@
 
 
 @endsection
+<script>
+function pedido(){
+    alert("Tu pedido ha sido completado");
+}
+</script>
