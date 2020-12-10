@@ -39,41 +39,47 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
         if(Auth::user()->rol==null)
-        { 
-            $pedido = new pedido;
-            $pedido->id_cliente = Auth::user()->id;
-            $pedido->total = 0;
-
-            $pedido->save();
-
-            //Crear los detalles de pedido de cada producto.
-            $carrito = new carrito;
-            $total = 0;
-            $prod = $carrito->getProductosCarrito(Auth::user()->id);
-            foreach($prod as $p)
+        {
+            if(Auth::user()->direccion==null || Auth::user()->ciudad==null || Auth::user()->estado==null)
             {
-                $detalle = new detallepedido;
-                $detalle->id_pedido = $pedido->id;
-                $detalle->id_producto = $p->id_producto;
-                $detalle->cantidad = $p->cantidad;
-                $detalle->subtotal = $p->cantidad * $p->precio;
-                
-                $total += $detalle->subtotal;
-                $detalle->save();
+                return view('perfil');
             }
-            //Guardar el total de la venta.
-            $pedido->total = $total;
-            $pedido->save();
-
-            //Elimina el carrito
-            $prodCarrito = $carrito->eliminaProdCarrito(Auth::user()->id);
-            //dd($prodCarrito);
-            foreach($prodCarrito as $pC)
+            else
             {
-                $c = carrito::find($pC->id);
-                $c->delete();
-            }
+                $pedido = new pedido;
+                $pedido->id_cliente = Auth::user()->id;
+                $pedido->total = 0;
 
+                $pedido->save();
+
+                //Crear los detalles de pedido de cada producto.
+                $carrito = new carrito;
+                $total = 0;
+                $prod = $carrito->getProductosCarrito(Auth::user()->id);
+                foreach($prod as $p)
+                {
+                    $detalle = new detallepedido;
+                    $detalle->id_pedido = $pedido->id;
+                    $detalle->id_producto = $p->id_producto;
+                    $detalle->cantidad = $p->cantidad;
+                    $detalle->subtotal = $p->cantidad * $p->precio;
+                    
+                    $total += $detalle->subtotal;
+                    $detalle->save();
+                }
+                //Guardar el total de la venta.
+                $pedido->total = $total;
+                $pedido->save();
+
+                //Elimina el carrito
+                $prodCarrito = $carrito->eliminaProdCarrito(Auth::user()->id);
+                //dd($prodCarrito);
+                foreach($prodCarrito as $pC)
+                {
+                    $c = carrito::find($pC->id);
+                    $c->delete();
+                }
+            }
         }
         return redirect("/");
     }
@@ -86,7 +92,13 @@ class PedidoController extends Controller
      */
     public function show($id)
     {
-        //
+        $pedido = new pedido;
+        $pedido = pedido::where('id_cliente', '=', $id)->get();
+
+        //$detalle = new detallepedido;
+        //$dp = $detalle->detallePedido($pedido->id);
+        //SELECT * FROM pedido WHERE pedido.id_cliente = 2
+        return view('misPedidos')->with('pedidos', $pedido);
     }
 
     /**

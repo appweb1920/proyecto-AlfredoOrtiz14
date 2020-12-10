@@ -119,7 +119,7 @@
                                 @if(Auth::user()->rol == 1)
                                 <a class="dropdown-item" href="">Ver pedidos</a>
                                 @else
-                                <a class="dropdown-item" href="">Mis pedidos</a>
+                                <a class="dropdown-item" href="/misPedidos/{{Auth::user()->id}}">Mis pedidos</a>
                                 @endif
                                 
                                 <a class="dropdown-item" href="{{ route('logout') }}"

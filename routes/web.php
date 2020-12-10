@@ -46,3 +46,4 @@ Route::get('/eliminaProdCar/{id}', 'CarritoController@destroy')->middleware('aut
 
 //Pedido
 Route::get('/hacerPedido', 'PedidoController@store')->middleware('auth');
+Route::get('/misPedidos/{id}', 'PedidoController@show')->middleware('auth');
