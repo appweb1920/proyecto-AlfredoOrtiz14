@@ -21,6 +21,7 @@ class Producto extends Migration
             $table->integer('precio');
             $table->integer('existencias');
             $table->string('departamento');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +33,9 @@ class Producto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('productos');
+        //Schema::dropIfExists('productos');
+        Schema::table('productos', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

@@ -18,6 +18,7 @@ class ProductoController extends Controller
     public function index()
     {
         $p = producto::all();
+        //dd($p);
         return view('welcome')->with('productos', $p);
     }
 
@@ -85,8 +86,10 @@ class ProductoController extends Controller
             $producto->save();
 
             $archivo = $request->file('foto');
+            //dd($archivo);
             $path = $request->file('foto')->storeAs('public/img', $producto->id.".".$archivo->getClientOriginalExtension());
             $producto->foto = $producto->id.".".$archivo->getClientOriginalExtension();
+            //dd($producto->foto);
             $producto->save();
         }
         return redirect("/");
