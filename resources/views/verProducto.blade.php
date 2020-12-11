@@ -1,8 +1,7 @@
 @extends('layout')
 
 @section('content')
-
-<div class="container pt-4 pb-4 mb-4">
+<div class="container mt-4 pt-4 pb-4 mb-4">
     <div class="col-md-12 row">
         <div class="col-md-6 col-sm-12 border">
             <img src="{{ asset('storage/img/'.$p->foto)}}" class="img-fluid" alt="">
