@@ -75,6 +75,14 @@ class ProductoController extends Controller
     {
         if(Auth::user()->rol==1)
         { 
+            $this->validate($request, [
+                'nombre' => 'required',
+                'descripcion' => 'required',
+                'precio' => 'required',
+                'existencias' => 'required',
+                'departamento' => 'required',
+
+            ]);
             $producto = new producto;
             $producto->nombre = $request->nombre;
             $producto->descripcion = $request->descripcion;
@@ -92,7 +100,8 @@ class ProductoController extends Controller
             //dd($producto->foto);
             $producto->save();
         }
-        return redirect("/");
+        //return redirect("/");
+        return back();
     }
 
     /**

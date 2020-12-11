@@ -8,6 +8,14 @@
     </div>
 </div>
 
+@if($errors->any())
+    <div class="alert alert-danger">
+        @foreach($errors->all() as $e)
+            <p>{{$e}}</p>
+        @endforeach
+    </div>
+@endif
+
 <div class="container p-4 border-bottom" style="font-size: 20px;">
     <form action="/insertaProducto" method="post" enctype="multipart/form-data">
     @csrf
