@@ -21,6 +21,12 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+/*----Nota----
+Hay un usuario administrador en un seeder, para crear otro administrador, primero hay que registrar
+un nuevo usuario y luego en la base de datos cambiar el rol a 1.
+
+*/
+
 //Perfil
 Route::get('/perfil', 'UsuarioController@index')->middleware('auth');
 Route::post('/perfilActualiza', 'UsuarioController@actualizaDatosEntrega')->middleware('auth');

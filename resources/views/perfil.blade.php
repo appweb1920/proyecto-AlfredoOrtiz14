@@ -31,23 +31,23 @@
                 <div class="card-body perf row col-md-12">
                     <div class="col-md-6">
                         <label for="name">Nombre: </label>
-                        <input type="text" name="name" id="" value="{{Auth::user()->name}}">
+                        <input class="form-control" type="text" name="name" id="" value="{{Auth::user()->name}}">
                     </div>
 
                     <div class="col-md-6">
                         <label for="direccion">Dirección: </label>
-                        <input type="text" name="direccion" id="" value="{{Auth::user()->direccion}}">
+                        <input class="form-control" type="text" name="direccion" id="" value="{{Auth::user()->direccion}}">
                     </div>
                 </div>
                 <div class="card-body perf row col-md-12">
                     <div class="col-md-6">
                         <label for="estado">Estado: </label>
-                        <input type="text" name="estado" id="" value="{{Auth::user()->estado}}">
+                        <input class="form-control" type="text" name="estado" id="" value="{{Auth::user()->estado}}">
                     </div>
                     
                     <div class="col-md-6">
                     <label for="ciudad">Ciudad: </label>
-                        <input type="text" name="ciudad" id="" value="{{Auth::user()->ciudad}}">
+                        <input class="form-control" type="text" name="ciudad" id="" value="{{Auth::user()->ciudad}}">
                     </div>
                 </div>
             </div>

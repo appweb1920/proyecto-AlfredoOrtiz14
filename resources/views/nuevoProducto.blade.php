@@ -26,29 +26,29 @@
                 <div class="card-body perf row col-md-12">
                     <div class="col-md-4">
                         <label for="nombre">Nombre </label>
-                        <input type="text" name="nombre" id="">
+                        <input class="form-control" type="text" name="nombre" id="">
                     </div>
 
                     <div class="col-md-8">
                         <label for="descripcion">Descripción </label>
-                        <textarea class="textProd" name="descripcion" id="" cols="80" rows="3"></textarea>
+                        <textarea class="textProd form-control" name="descripcion" id="" cols="80" rows="3"></textarea>
                     </div>
                 
                 </div>
                 <div class="card-body perf row col-md-12">
                     <div class="col-md-4">
                         <label for="precio">Precio </label>
-                        <input type="text" name="precio" id="">
+                        <input class="form-control" type="text" name="precio" id="">
                     </div>
 
                     <div class="col-md-4">
                         <label for="existencias">Existencias </label>
-                        <input type="text" name="existencias" id="">
+                        <input class="form-control" type="text" name="existencias" id="">
                     </div>
                     
                     <div class="col-md-4">
                     <label for="departamento">Departamento </label>
-                        <select name="departamento" id="">
+                        <select class="form-control" name="departamento" id="">
                             <option value="oficina">Oficina</option>
                             <option value="cocina">Cocina</option>
                             <option value="hogar">Hogar</option>

@@ -100,8 +100,8 @@ class ProductoController extends Controller
             //dd($producto->foto);
             $producto->save();
         }
-        //return redirect("/");
-        return back();
+        //return redirect("/"); 
+        return redirect()->back(); 
     }
 
     /**
@@ -112,10 +112,17 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //buscar el dato
-        $producto = producto::find($id);
-        //pasarlo a la vista
-        return view('actualizaProducto')->with('p', $producto);
+        if(Auth::user()->rol==1)
+        {
+            //buscar el dato
+            $producto = producto::find($id);
+            $dep = array('Oficina', 'Hogar', 'Cocina');
+            //dd($dep);
+            //pasarlo a la vista
+            return view('actualizaProducto')->with('p', $producto)->with('dep', $dep);    
+        }
+        else
+            return redirect("/");
     }
 
     public function verProducto($id)

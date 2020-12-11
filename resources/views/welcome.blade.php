@@ -22,7 +22,7 @@
                     <a href="/verProducto/{{$p->id}}">
                         <img class="card-img-top imagen border-bottom" src="{{ asset('storage/img/'.$p->foto)}}" alt="Card image cap">
                     </a>
-                    <div class="pt-1 card-body">
+                    <div class="pt-1 card-body" style="background-color:rgba(245, 245, 245, 0.8);">
                         <div class="card-title">{{$p->nombre}}</div>
                         <div class="row">
                             <div class="card-text col-6 precio">${{$p->precio}}</div>

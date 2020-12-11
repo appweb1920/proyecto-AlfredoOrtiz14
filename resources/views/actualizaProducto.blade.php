@@ -19,32 +19,34 @@
                 <div class="card-body perf row col-md-12">
                     <div class="col-md-4">
                         <label for="nombre">Nombre </label>
-                        <input type="text" name="nombre" id="" value="{{$p->nombre}}">
+                        <input type="text" class="form-control" name="nombre" id="" value="{{$p->nombre}}">
                     </div>
 
                     <div class="col-md-8">
                         <label for="descripcion">Descripción </label>
-                        <textarea class="textProd" name="descripcion" id="" cols="80" rows="3">{{$p->descripcion}}</textarea>
+                        <textarea class="textProd form-control" name="descripcion" id="" cols="80" rows="3">{{$p->descripcion}}</textarea>
                     </div>
                 
                 </div>
                 <div class="card-body perf row col-md-12">
                     <div class="col-md-4">
                         <label for="precio">Precio </label>
-                        <input type="text" name="precio" id="" value="{{$p->precio}}">
+                        <input type="text" class="form-control" name="precio" id="" value="{{$p->precio}}">
                     </div>
 
                     <div class="col-md-4">
                         <label for="existencias">Existencias </label>
-                        <input type="text" name="existencias" id="" value="{{$p->existencias}}">
+                        <input type="text" class="form-control" name="existencias" id="" value="{{$p->existencias}}">
                     </div>
                 
                     <div class="col-md-4">
                     <label for="departamento">Departamento </label>
-                        <select name="departamento" id="" selected="{{$p->departamento}}">
-                            <option value="Oficina">Oficina</option>
-                            <option value="Cocina">Cocina</option>
-                            <option value="Hogar">Hogar</option>
+                        <select class="form-control" name="departamento" id="departamento" selected="{{$p->departamento}}">
+                            @foreach($dep as $d)
+                                <option value="{{ $d }}" {{$d == $p->departamento ? 'selected' : '' }}>{{ $d }}</option>
+                                
+                            @endforeach
+                        
                         </select>
                     </div>
                 </div>
